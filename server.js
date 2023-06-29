@@ -1,7 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
-
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
@@ -30,4 +27,10 @@ app.use('/', indexRouter)
 app.use('/authors', authorRouter)
 app.use('/books', bookRouter)
 
-app.listen(process.env.PORT || 3000)
+const hostname = "0.0.0.0";
+const port = 5000;
+
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+
